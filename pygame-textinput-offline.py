@@ -2,6 +2,8 @@ import pygame_textinput
 import pygame
 from github import Github, Auth
 
+# Original version with pygame-textinput
+# Might work online but it's for pygame not pygame-ce
 class Project:
 
     __gh = None

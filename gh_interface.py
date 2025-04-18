@@ -1,4 +1,4 @@
-from github import Github, Auth
+from github import Github, Auth, GithubException
 class Committer:
 
     __gh = None
@@ -7,7 +7,10 @@ class Committer:
         if cls.__gh is None:
             cls.__connect()
         repo = cls.__gh.get_user("community-biscuit").get_repo("auto-commit-fork")
-        repo.create_file(filename + '.txt', 'commit', 'Dummy')
+        try:
+            repo.create_file(filename + '.txt', 'commit', 'Dummy')
+        except GithubException:
+            return
     
     @classmethod
     def __connect(cls):
